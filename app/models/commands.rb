@@ -1,9 +1,10 @@
 module Commands
-  def self.get(cmd, uberzeit)
+  def self.get(cmd, uberzeit, time_type)
     {
       "" => Commands::Show.new(uberzeit),
-      "on" => Commands::Start.new(uberzeit),
-      "off" => Commands::Stop.new(uberzeit),
+      "info" => Commands::Show.new(uberzeit),
+      "start" => Commands::Start.new(uberzeit, time_type),
+      "stop" => Commands::Stop.new(uberzeit),
     }.fetch(cmd, Commands::Unknown.new)
   end
 end

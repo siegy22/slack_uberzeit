@@ -2,15 +2,17 @@ class Uberzeit
   include HTTParty
   base_uri ENV["UBERZEIT_URL"]
 
+  DEFAULT_TIME_TYPE = 1
+
   def initialize(user)
     @user = user
   end
 
-  def start_timer
+  def start_timer(time_type)
     self.class.post("/api/timer",
                     headers: headers,
                     body: {
-                      time_type_id: 1,
+                      time_type_id: time_type,
                     })
   end
 
@@ -24,6 +26,10 @@ class Uberzeit
 
   def timer
     self.class.get("/api/timer", headers: headers)
+  end
+
+  def time_types
+    self.class.get("/api/time_types", headers: headers)
   end
 
   private

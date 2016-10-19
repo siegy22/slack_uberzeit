@@ -5,8 +5,14 @@ module Commands
     end
 
     def run
-      duration = @uberzeit.timer["duration"]
-      "You have been working for #{duration}"
+      timer = @uberzeit.timer
+      duration = timer["duration"]
+      if duration.present?
+        "You have been working for #{duration}"
+      else
+        "You need to start your timer using `/uberzeit start`\n" +
+          "Then, check back again!"
+      end
     end
   end
 end
