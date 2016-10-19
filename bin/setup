@@ -18,10 +18,16 @@ chdir APP_ROOT do
   system! 'gem install bundler --conservative'
   system('bundle check') || system!('bundle install')
 
-  # puts "\n== Copying sample files =="
-  # unless File.exist?('config/database.yml')
-  #   cp 'config/database.yml.sample', 'config/database.yml'
-  # end
+  puts "\n== Copying sample files =="
+  unless File.exist?('.env.production')
+    cp '.env.production.sample', '.env.production'
+    puts "-> Please specify variables in .env.production"
+  end
+
+  unless File.exist?('config/users.yml')
+    cp 'config/users.yml.sample', 'config/users.yml'
+    puts "-> Please specify variables in config/users.yml"
+  end
 
   puts "\n== Preparing database =="
   system! 'bin/rails db:setup'
