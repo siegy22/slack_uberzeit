@@ -44,6 +44,18 @@ use `/uberzeit start homeoffice`.
 Side note: if the time type is not availabe, it will print all the time types
 available, so you can choose one of them, of course they're case-insensitive.
 
+### Commands
+
+The usage of a command is like that:
+
+`/uberzeit <command> <parameter>`
+
+| Command       | Function      | Example  |
+| ------------- | ------------- | -------- |
+| start         | Starts a timer on the current time. You can pass in one parameter which will be the time type, defaults to "work" | /uberzeit start homeoffice
+| stop          | Stops the current timer | /uberzeit stop |
+| info / empty  | Shows how long you've been working for.  | /uberzeit or /uberzeit info
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/siegy22/slack_uberzeit. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
