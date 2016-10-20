@@ -1,4 +1,6 @@
 class Uberzeit
+  class UsernameMissing < StandardError; end
+
   include HTTParty
   base_uri ENV["UBERZEIT_URL"]
 
@@ -40,6 +42,7 @@ class Uberzeit
   end
 
   def api_token
-    Rails.application.config.users[@user]
+    token = Rails.application.config.users[@user]
+    token || (raise UsernameMissing, "Cannot find API key for user called \"#{@user}\"")
   end
 end

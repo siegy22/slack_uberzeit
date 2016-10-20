@@ -1,4 +1,8 @@
 class ApiController < ApplicationController
+  rescue_from Uberzeit::UsernameMissing do |e|
+    render plain: e.message
+  end
+
   def api
     cmd = Commands.get(command, uberzeit, time_type)
     @message = cmd.run
