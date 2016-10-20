@@ -14,11 +14,11 @@ It's still in very early development, pull requests/issues are very welcome!
 * Add Configuration:
 * Choose A command: /uberzeit (this is what I prefer)
 * Fill in the following:
-..* URL: https://example.com (we'll change that later)
-..* Customize Name: Uberzeit
-..* Customize Icon: Just upload an icon you like
-..* Autocomplete > Description: Uberzeit timer manager
-..* Autocomplete > Usage hint: [info/start/stop] [time_type]
+  * URL: https://example.com (we'll change that later)
+  * Customize Name: Uberzeit
+  * Customize Icon: Just upload an icon you like
+  * Autocomplete > Description: Uberzeit timer manager
+  * Autocomplete > Usage hint: [info/start/stop] [time_type]
 * Save Integration
 
 ### Setup rails app
