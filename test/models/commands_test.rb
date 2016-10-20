@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CommandsTest < ActiveSupport::TestCase
   test "get show command if empty" do
-    assert_instance_of Commands::Show, get_command("")
+    assert_instance_of Commands::Show, get_command(nil)
   end
 
   test "get show command if info" do
