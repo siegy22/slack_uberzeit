@@ -9,7 +9,7 @@ class ApiController < ApplicationController
 
   private
   def user_needs_token!
-    unless user.has_token?
+    if user.no_token? && command != "configure"
       render(plain: "You don't have your uberzeit API token setup.\n" +
              "Click the little heart in the footer of uberzeit to reveal your API token.\n" +
              "Then execute `/uberzeit configure <your-api-token>` to set it.")

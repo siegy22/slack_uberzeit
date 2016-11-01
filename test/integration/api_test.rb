@@ -6,11 +6,11 @@ class ApiTest < ActionDispatch::IntegrationTest
 
     api_token = "d5cf34936790429e20d3b11f862c6cf2"
     post api_path, params: {
-      user_name: "jack_sparrow",
+      user_name: "johnny_cash",
       token: ENV["SLACK_TOKEN"],
       text: "configure #{api_token}"
     }
     assert_equal "You're all set!\nYou can now use `/uberzeit start` to start your timer.", response.body
-    assert_equal api_token, users(:jack).token
+    assert_equal api_token, users(:john).token
   end
 end

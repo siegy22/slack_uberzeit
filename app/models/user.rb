@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  def has_token?
-    token.present?
+  def no_token?
+    !token.present?
   end
 
   def uberzeit
