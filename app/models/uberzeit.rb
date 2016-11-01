@@ -29,11 +29,7 @@ class Uberzeit
   end
 
   def time_types
-    self.class.get("/api/time_types")
-  end
-
-  def activities
-    self.class.get("/api/activities")
+    self.class.get("/api/time_types", headers: headers)
   end
 
   private

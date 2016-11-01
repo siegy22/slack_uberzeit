@@ -8,7 +8,7 @@ class User < ApplicationRecord
   end
 
   def valid_token?
-    uberzeit.activities.ok?
+    uberzeit.time_types.ok?
   end
 
   private
