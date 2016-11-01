@@ -9,4 +9,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  teardown do
+    MockUberzeit.reset_response
+  end
 end

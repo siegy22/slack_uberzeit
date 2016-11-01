@@ -1,34 +1,37 @@
 class MockUberzeit
-  DEFAULT_TIME_TYPE = 1
+  def self.response=(res)
+    $mock_response = res
+  end
 
-  def initialize(user,
-                 timer: {},
-                 start_timer_response: nil,
-                 stop_timer_response: nil)
-    @user = user
-    @timer = timer
-    @start_timer_response = start_timer_response
-    @stop_timer_response = stop_timer_response
+  def self.reset_response
+    $mock_response = nil
+  end
+
+  def initialize(_user = nil)
   end
 
   def start_timer(time_type)
-    @start_timer_response
+    $mock_response
   end
 
   def stop_timer
-    @stop_timer_response
+    $mock_response
   end
 
   def timer
-    @timer
+    $mock_response
+  end
+
+  def activities
+    $mock_response
   end
 
   def time_types
     [
-     {"id" => 1,"name" => "Arbeit", "is_work" => true},
-     {"id" => 2,"name" => "Krank", "is_work" => false},
-     {"id" => 3,"name" => "Ferien", "is_work" => false},
-     {"id" => 4,"name" => "Homeoffice", "is_work" => true},
+     {"id" => 1, "name" => "Arbeit", "is_work" => true},
+     {"id" => 2, "name" => "Krank", "is_work" => false},
+     {"id" => 3, "name" => "Ferien", "is_work" => false},
+     {"id" => 4, "name" => "Homeoffice", "is_work" => true},
     ]
   end
 end

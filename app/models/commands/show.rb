@@ -1,11 +1,11 @@
 module Commands
   class Show
-    def initialize(uberzeit)
-      @uberzeit = uberzeit
+    def initialize(user)
+      @user = user
     end
 
     def run
-      timer = @uberzeit.timer
+      timer = @user.uberzeit.timer
       duration = timer["duration"]
       if duration.present?
         "You have been working for #{duration}"

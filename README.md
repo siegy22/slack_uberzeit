@@ -27,9 +27,6 @@ To setup the basic stuff just run `bin/setup`.
 
 Fill out `.env.production` with your data.
 
-In the `config/users.yml` you'll have to store all the users with their uberzeit
-API keys. So the key is the slack username and value is the uberzeit API key.
-
 Publish the app under a domain and go back to the slack custom integrations and
 change the url to the following: `https://<yourdeployedapp>.com/api`
 
@@ -48,10 +45,11 @@ available, so you can choose one of them, of course they're case-insensitive.
 
 The usage of a command is like that:
 
-`/uberzeit <command> <parameter>`
+`/uberzeit <command> <parameters>`
 
 | Command       | Function      | Example  |
 | ------------- | ------------- | -------- |
+| configure     | Configures the api token for uberzeit | /uberzeit configure api-token |
 | start         | Starts a timer on the current time. You can pass in one parameter which will be the time type, defaults to "work" | /uberzeit start homeoffice
 | stop          | Stops the current timer | /uberzeit stop |
 | info / empty  | Shows how long you've been working for.  | /uberzeit or /uberzeit info

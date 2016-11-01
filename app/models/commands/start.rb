@@ -1,14 +1,17 @@
 module Commands
   class Start
-    class UnknownTimeType < StandardError; end
-
-    def initialize(uberzeit, time_type)
-      @uberzeit = uberzeit
-      @time_type = time_type
+    def initialize(user, parameters)
+      @user = user
+      @parameters = parameters
     end
 
     def run
-      response = @uberzeit.start_timer(time_type)
+      unless time_type
+        return unknown_time_type_message(@parameters.first,
+                                         Uberzeit::TimeType.all.map(&:name))
+      end
+
+      response = @user.uberzeit.start_timer(time_type)
       if response.created?
         "Your timer has been started!"
       elsif response.unprocessable_entity?
@@ -16,23 +19,16 @@ module Commands
       else
         "There was an error starting your timer"
       end
-    rescue UnknownTimeType => e
-      e.message
     end
 
     private
     def time_type
-      if @time_type == Uberzeit::DEFAULT_TIME_TYPE
-        @time_type
+      if @parameters.empty?
+        Uberzeit::TimeType::DEFAULT
+      elsif time_type = Uberzeit::TimeType.for_text(@parameters.first)
+        time_type.id
       else
-        selectable = @uberzeit.time_types.select { |tt| tt["is_work"] }
-        selectable_texts = selectable.map { |tt| tt["name"] }
-        selected = selectable.detect { |tt| tt["name"].downcase == @time_type.downcase }
-        if selected
-          selected["id"]
-        else
-          raise UnknownTimeType, unknown_time_type_message(@time_type, selectable_texts)
-        end
+        nil
       end
     end
 

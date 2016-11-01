@@ -12,8 +12,7 @@ class CommandsStopTest < ActiveSupport::TestCase
   end
 
   def build_command(options)
-    response = MockResponse.new(options)
-    uberzeit = MockUberzeit.new "test", stop_timer_response: response
-    Commands::Stop.new(uberzeit)
+    MockUberzeit.response = MockResponse.new(options)
+    Commands::Stop.new(users(:jack))
   end
 end

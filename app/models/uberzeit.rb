@@ -1,12 +1,10 @@
 class Uberzeit
-  class UsernameMissing < StandardError; end
-
   include HTTParty
   base_uri ENV["UBERZEIT_URL"]
 
   DEFAULT_TIME_TYPE = 1
 
-  def initialize(user)
+  def initialize(user = nil)
     @user = user
   end
 
@@ -31,18 +29,17 @@ class Uberzeit
   end
 
   def time_types
-    self.class.get("/api/time_types", headers: headers)
+    self.class.get("/api/time_types")
+  end
+
+  def activities
+    self.class.get("/api/activities")
   end
 
   private
   def headers
     {
-      "X-Auth-Token" => api_token
+      "X-Auth-Token" => @user.token
     }
-  end
-
-  def api_token
-    token = Rails.application.config.users[@user]
-    token || (raise UsernameMissing, "Cannot find API key for user called \"#{@user}\"")
   end
 end

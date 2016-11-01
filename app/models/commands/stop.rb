@@ -1,11 +1,11 @@
 module Commands
   class Stop
-    def initialize(uberzeit)
-      @uberzeit = uberzeit
+    def initialize(user)
+      @user = user
     end
 
     def run
-      response = @uberzeit.stop_timer
+      response = @user.uberzeit.stop_timer
       if response.ok?
         "Your timer was stopped!"
       elsif response.not_found?
