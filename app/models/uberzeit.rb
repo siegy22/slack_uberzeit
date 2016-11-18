@@ -7,11 +7,10 @@ class Uberzeit
   end
 
   def start_timer(time)
-    body = if time
-             { start: time }
-           else
-             {}
-           end
+    body = {
+      time_type_id: ENV.fetch("UBERZEIT_TIME_TYPE_ID", 1)
+    }
+    body.merge!(start: time) if time.present?
     self.class.post("/api/timer",
                     headers: headers,
                     body: body)
