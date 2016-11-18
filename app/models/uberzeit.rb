@@ -12,21 +12,21 @@ class Uberzeit
            else
              {}
            end
-    post("/api/timer",
-         headers: headers,
-         body: body)
+    self.class.post("/api/timer",
+                    headers: headers,
+                    body: body)
   end
 
   def stop_timer
-    put("/api/timer",
-        headers: headers,
-        body: {
-          "end" => true
-        })
+    self.class.put("/api/timer",
+                   headers: headers,
+                   body: {
+                     "end" => true
+                   })
   end
 
   def timer
-    get("/api/timer", headers: headers)
+    self.class.get("/api/timer", headers: headers)
   end
 
   private
