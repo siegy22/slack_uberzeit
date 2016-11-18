@@ -1,5 +1,7 @@
 # slack_uberzeit
 
+[![Build Status](https://travis-ci.org/siegy22/slack_uberzeit.svg?branch=master)](https://travis-ci.org/siegy22/slack_uberzeit)
+
 Minimal Rails 5 app to control your
 [uberzeit](https://github.com/ninech/uberzeit) timer via slack.
 
