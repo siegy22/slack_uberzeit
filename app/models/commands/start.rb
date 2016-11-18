@@ -6,23 +6,19 @@ module Commands
     end
 
     def run
-      begin
-        # Check if the time is a valid time format
-        Time.parse(time) if time.present?
-      rescue ArgumentError
-        return "Oops! #{time} does not look like a time.\n" +
+      validator = TimeValidator.new(time)
+      if validator.ok?
+        response = @user.uberzeit.start_timer(time)
+        handler = ResponseHandler.new(response, {
+                                        created: "Your timer has been started!",
+                                        unprocessable_entity: "There's already a timer running",
+                                        fallback: "There was an error starting your timer",
+                                      })
+        handler.message
+      else
+        "Oops! #{time} does not look like a time.\n" +
           "The time format must be: HH:MM"
       end
-
-      response = @user.uberzeit.start_timer(time)
-      if response.created?
-        "Your timer has been started!"
-      elsif response.unprocessable_entity?
-        "There's already a timer running"
-      else
-        "There was an error starting your timer"
-      end
-
     end
 
     private

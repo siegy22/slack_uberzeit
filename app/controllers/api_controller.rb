@@ -3,8 +3,7 @@ class ApiController < ApplicationController
 
   def api
     cmd = Commands.get(command, user, cmd_parameters)
-    @message = cmd.run
-    render plain: @message
+    render plain: cmd.run
   end
 
   private

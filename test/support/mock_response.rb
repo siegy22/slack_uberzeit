@@ -1,35 +1,13 @@
 class MockResponse
-  def initialize(created: false,
-                 unprocessable_entity: false,
-                 ok: false,
-                 not_found: false)
-    @created              = created
-    @unprocessable_entity = unprocessable_entity
-    @ok = ok
-    @not_found = not_found
+  def initialize(status: nil)
+    @status_msg = status
   end
 
-  def created?
-    @created
-  end
-
-  def unprocessable_entity?
-    @unprocessable_entity
-  end
-
-  def ok?
-    @ok
-  end
-
-  def not_found?
-    @not_found
-  end
-
-  def respond_to?(name)
-    true
+  def code
+    Rack::Utils::SYMBOL_TO_STATUS_CODE[@status_msg]
   end
 
   def method_missing(name, *args)
-    false
+    name.to_s == "#{@status_msg}?"
   end
 end
