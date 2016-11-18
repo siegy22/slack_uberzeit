@@ -20,7 +20,7 @@ It's still in very early development, pull requests/issues are very welcome!
   * Customize Name: Uberzeit
   * Customize Icon: Just upload an icon you like
   * Autocomplete > Description: Uberzeit timer manager
-  * Autocomplete > Usage hint: [info/start/stop] [time_type]
+  * Autocomplete > Usage hint: [configure/info/start/stop]
 * Save Integration
 
 ### Setup rails app
@@ -37,12 +37,6 @@ change the url to the following: `https://<yourdeployedapp>.com/api`
 
 ![alt text](doc/basic.gif)
 
-To go a little more advanced you can use `/uberzeit start time_type`. Let's say
-you have a Homeoffice time type configured in your uberzeit app, you can then
-use `/uberzeit start homeoffice`.
-Side note: if the time type is not availabe, it will print all the time types
-available, so you can choose one of them, of course they're case-insensitive.
-
 ### Commands
 
 The usage of a command is like that:
@@ -52,7 +46,9 @@ The usage of a command is like that:
 | Command       | Function      | Example  |
 | ------------- | ------------- | -------- |
 | configure     | Configures the api token for uberzeit | /uberzeit configure api-token |
-| start         | Starts a timer on the current time. You can pass in one parameter which will be the time type, defaults to "work" | /uberzeit start homeoffice
+| start         | Starts a timer on the current time. Forgot to start your
+| timer? you can easily pass an argument which would be the time you started the
+| timer. | /uberzeit start 08:35
 | stop          | Stops the current timer | /uberzeit stop |
 | info / empty  | Shows how long you've been working for.  | /uberzeit or /uberzeit info
 

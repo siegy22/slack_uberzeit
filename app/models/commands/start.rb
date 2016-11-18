@@ -6,12 +6,15 @@ module Commands
     end
 
     def run
-      unless time_type
-        return unknown_time_type_message(@parameters.first,
-                                         Uberzeit::TimeType.all.map(&:name))
+      begin
+        # Check if the time is a valid time format
+        Time.parse(time) if time.present?
+      rescue ArgumentError
+        return "Oops! #{time} does not look like a time.\n" +
+          "The time format must be: HH:MM"
       end
 
-      response = @user.uberzeit.start_timer(time_type)
+      response = @user.uberzeit.start_timer(time)
       if response.created?
         "Your timer has been started!"
       elsif response.unprocessable_entity?
@@ -19,22 +22,12 @@ module Commands
       else
         "There was an error starting your timer"
       end
+
     end
 
     private
-    def time_type
-      if @parameters.empty?
-        Uberzeit::TimeType::DEFAULT
-      elsif time_type = Uberzeit::TimeType.for_text(@parameters.first)
-        time_type.id
-      else
-        nil
-      end
-    end
-
-    def unknown_time_type_message(given, available)
-      "Cannot find time type called \"#{given}\"\n" +
-        "Available: #{available.join(", ")}"
+    def time
+      @parameters.first
     end
   end
 end

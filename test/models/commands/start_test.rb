@@ -1,30 +1,30 @@
 require 'test_helper'
 
 class CommandsStartTest < ActiveSupport::TestCase
-  test "start timer" do
-    cmd = build_command(["arbeit"], created: true)
+  test "start timer without arguments (uberzeit uses current timestamp if nothing passed)" do
+    cmd = build_command(nil, created: true)
     assert_equal "Your timer has been started!", cmd.run
   end
 
-  test "start timer with custom time type" do
-    cmd = build_command(["homeoffice"], created: true)
+  test "start timer with custom time" do
+    cmd = build_command("07:34", created: true)
     assert_equal "Your timer has been started!", cmd.run
   end
 
-  test "start timer with custom time type that does not exist" do
-    cmd = build_command(["no exist"])
-    assert_equal "Cannot find time type called \"no exist\"\n" +
-      "Available: Arbeit, Homeoffice", cmd.run
+  test "start timer with invalid custom time" do
+    cmd = build_command("74:11")
+    assert_equal "Oops! 74:11 does not look like a time.\n" +
+      "The time format must be: HH:MM", cmd.run
   end
 
   test "start timer if already started" do
-    cmd = build_command(["arbeit"], unprocessable_entity: true)
+    cmd = build_command(nil, unprocessable_entity: true)
     assert_equal "There's already a timer running", cmd.run
   end
 
-  def build_command(time_type, options = {})
+  def build_command(time, options = {})
     response = MockResponse.new(options)
     MockUberzeit.response = response
-    Commands::Start.new(users(:jack), time_type)
+    Commands::Start.new(users(:jack), Array(time))
   end
 end
