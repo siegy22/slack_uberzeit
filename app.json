@@ -9,4 +9,12 @@
     "SLACK_TOKEN": null,
     "SECRET_KEY_BASE": null
   }
+  "addons": [
+    {
+      "plan": "heroku-postgresql",
+      "options": {
+        "version": "9.5"
+      }
+    }
+  ]
 }
