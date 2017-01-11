@@ -12,8 +12,14 @@ class ResponseHandler
 
   def message
     @handle.fetch(@response.code) do
-      Rails.logger.log(@response.inspect)
+      log(@response.inspect)
       @fallback
     end
+  end
+
+  private
+  def log(msg)
+    logger = Rails.logger
+    logger.tagged("RESPONSE_HANDLER") { logger.error(msg) }
   end
 end

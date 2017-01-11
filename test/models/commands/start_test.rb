@@ -25,6 +25,6 @@ class CommandsStartTest < ActiveSupport::TestCase
   def build_command(time, options = {})
     response = MockResponse.new(options)
     MockUberzeit.response = response
-    Commands::Start.new(users(:jack), Array(time))
+    Commands::Start.new(user: users(:jack), parameters: Array(time))
   end
 end

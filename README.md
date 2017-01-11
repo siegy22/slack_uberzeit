@@ -43,14 +43,14 @@ The usage of a command is like that:
 
 `/uberzeit <command> <parameters>`
 
+
 | Command       | Function      | Example  |
 | ------------- | ------------- | -------- |
 | configure     | Configures the api token for uberzeit | /uberzeit configure api-token |
-| start         | Starts a timer on the current time. Forgot to start your
-| timer? you can easily pass an argument which would be the time you started the
-| timer. | /uberzeit start 08:35
+| start         | Starts a timer on the current time. Forgot to start your timer? you can easily pass an argument which would be the time you started the timer | /uberzeit start 08:35
 | stop          | Stops the current timer | /uberzeit stop |
-| info / empty  | Shows how long you've been working for.  | /uberzeit or /uberzeit info
+| info          | Shows how long you've been working for.  | /uberzeit info |
+| empty         | Toggles the timer | /uberzeit |
 
 ## Contributing
 

@@ -1,9 +1,5 @@
 module Commands
-  class Show
-    def initialize(user)
-      @user = user
-    end
-
+  class Info < Base
     def run
       timer = @user.uberzeit.timer
       duration = timer["duration"]

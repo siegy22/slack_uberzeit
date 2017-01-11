@@ -6,6 +6,10 @@ class User < ApplicationRecord
   def valid_token?
     # use an example request to check if the
     # token of the user is valid
+    uberzeit.example_request.ok?
+  end
+
+  def timer_running?
     uberzeit.timer.ok?
   end
 

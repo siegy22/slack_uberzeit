@@ -1,10 +1,5 @@
 module Commands
-  class Configure
-    def initialize(user, parameters)
-      @user = user
-      @parameters = parameters
-    end
-
+  class Configure < Base
     def run
       return "Please provide an API key!" if @parameters.empty?
 

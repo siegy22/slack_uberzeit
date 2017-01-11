@@ -1,6 +1,13 @@
 class MockResponse
-  def initialize(status: nil)
+  def initialize(status: nil, duration: nil)
     @status_msg = status
+    @duration = duration
+  end
+
+  def [](key)
+    if key == 'duration'
+      @duration
+    end
   end
 
   def code

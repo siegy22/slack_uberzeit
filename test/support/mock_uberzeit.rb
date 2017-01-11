@@ -22,7 +22,7 @@ class MockUberzeit
     @@mock_response
   end
 
-  def activities
+  def example_request
     @@mock_response
   end
 end

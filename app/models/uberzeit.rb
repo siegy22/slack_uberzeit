@@ -28,6 +28,10 @@ class Uberzeit
     self.class.get("/api/timer", headers: headers)
   end
 
+  def example_request
+    self.class.get("/api/time_types", headers: headers)
+  end
+
   private
   def headers
     {

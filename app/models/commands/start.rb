@@ -1,10 +1,5 @@
 module Commands
-  class Start
-    def initialize(user, parameters)
-      @user = user
-      @parameters = parameters
-    end
-
+  class Start < Base
     def run
       validator = TimeValidator.new(time)
       if validator.ok?
@@ -23,7 +18,11 @@ module Commands
 
     private
     def time
-      @parameters.first
+      if @parameters.present?
+        @parameters.first
+      else
+        nil
+      end
     end
   end
 end

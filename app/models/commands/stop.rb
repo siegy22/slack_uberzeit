@@ -1,9 +1,5 @@
 module Commands
-  class Stop
-    def initialize(user)
-      @user = user
-    end
-
+  class Stop < Base
     def run
       response = @user.uberzeit.stop_timer
       handler = ResponseHandler.new(response, {
