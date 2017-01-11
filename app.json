@@ -7,7 +7,10 @@
   "env": {
     "UBERZEIT_URL": null,
     "SLACK_TOKEN": null,
-    "SECRET_KEY_BASE": null
+    "SECRET_KEY_BASE": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+    }
   },
   "addons": [
     {
