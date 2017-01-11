@@ -1,4 +1,19 @@
 language: ruby
+
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database slack_uberzeit_test;' -U postgres
+
+cache:
+  bundler: true
+
 rvm:
   - 2.2.2
-  - 2.3.1
+  - 2.3.3
+  - ruby-head
+
+matrix:
+  allow_failures:
+    - rvm: ruby-head
