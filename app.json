@@ -1,0 +1,12 @@
+{
+  "name": "slack_uberzeit",
+  "description": "Integrates slack slash-commands with uberZeit",
+  "repository": "https://github.com/siegy22/slack_uberzeit",
+  "logo": "http://image.flaticon.com/icons/png/512/59/59252.png",
+  "keywords": ["ruby", "rails", "slack", "uberzeit"],
+  "env": {
+    "UBERZEIT_URL": null,
+    "SLACK_TOKEN": null,
+    "SECRET_KEY_BASE": null
+  }
+}

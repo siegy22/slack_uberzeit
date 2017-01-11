@@ -25,6 +25,15 @@ It's still in very early development, pull requests/issues are very welcome!
 
 ### Setup rails app
 
+#### Deploy to heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/siegy22/slack_uberzeit/tree/master)
+
+Fill out all the following ENV variables on heroku: `UBERZEIT_URL`,
+`SLACK_TOKEN`, `SECRET_KEY_BASE`.
+
+#### On Premise
+
 To setup the basic stuff just run `bin/setup`.
 
 Fill out `.env.production` with your data.
