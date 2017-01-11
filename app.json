@@ -25,5 +25,8 @@
       "quantity": 1,
       "size": "free"
     }
+  },
+  "scripts": {
+    "postdeploy": "bin/rake db:migrate"
   }
 }
